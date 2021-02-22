@@ -6,28 +6,28 @@
 
                             #Geometría del Túnel
 
-X=9.4 #ancho tunel
-Y=5 #largo del tunel
-Z=4.8 #altura tunel
-cx=0.1 #tamaño celda en x
-cy=0.1 #tamaño celda en y
-cz=0.1 #tamaño celda en z
+X=9.4 #tunnel width
+Y=5 #tunnel length
+Z=4.8 #tunnel height
+cx=0.1 #cell size in x
+cy=0.1 #cell size in y
+cz=0.1 #cell size in z
 
-#Curva para dibujar tunel - interpolación Excel con geometría AutoCad
+#Parametrization equation of tunnel shape with Excel interpolation
 
 def f(x):
     return -1*0.00037731654713724100*x**6 + 0.01064032662972640000*x**5 - 0.12023951690048300000*x**4 + 0.69353748265166400000*x**3 - 2.25803586101028000000*x**2 + 4.43075769525603000000*x**1 + 0.00018151820924572300
 
                             #Inputs Correa
 
-b = 2 #ancho de correa
-h = 0.1 #altura de la correa
-x_correa = 2.5 #distancia desde pared del tunel
+b = 2 #conveyor belt width
+h = 0.1 #conveyor belt height
+x_correa = 2.5 #lateral distance to tunnel walls
 
-                            #Incendio de diseño (nada aún)
+                            #Design fire curve 
 
-vel_viento = 2.0
-spread_rate = 0.02
+vel_viento = 2.0 #wind speed
+spread_rate = 0.02 #spread rate
 
 #----------------------------CÁLCULOS PREVIOS-----------------------------------
 #Cálculos varios
@@ -97,7 +97,7 @@ with open(Tunel,'w') as file_object:
     n=1
     dx=cx
     while n<=94:
-        file_object.write("&OBST XB="+str((n-1)*dx)+","+str(n*dx)+",0,"+str(Y)+","+str(0.2+f(n*dx))+",4.8 SURF_ID='CONCRETE SURFACE' / \n") #Para dibujar forma del túnel
+        file_object.write("&OBST XB="+str((n-1)*dx)+","+str(n*dx)+",0,"+str(Y)+","+str(0.2+f(n*dx))+",4.8 SURF_ID='CONCRETE SURFACE' / \n") #Tunnel shape geometry
         n+=1
 
     file_object.write("\n")
@@ -140,4 +140,4 @@ with open(Tunel,'w') as file_object:
 
     file_object.write("&PROP ID='Acme Heat', QUANTITY='LINK TEMPERATURE', RTI=66., ACTIVATION_TEMPERATURE=68. / \n") #heat detectors
     file_object.write("\n")
-    file_object.write("&SLCF PBX=4.7, QUANTITY='TEMPERATURE'/ \n") #Slice mitad del túnel
+    file_object.write("&SLCF PBX=4.7, QUANTITY='TEMPERATURE'/ \n") #Output temperature slice
