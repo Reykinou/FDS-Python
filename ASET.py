@@ -6,28 +6,28 @@
 
                             #Geometría del Túnel
 
-X=9.4 #ancho tunel
-Y=400 #largo del tunel
-Z=6.0 #altura tunel
-cx=0.2 #tamaño celda en x
-cy=0.4 #tamaño celda en y
-cz=0.25 #tamaño celda en z
+X=9.4 #tunnel width
+Y=400 #tunnel length
+Z=6.0 #tunnel height
+cx=0.2 #cell size in x x
+cy=0.4 #cell size in y
+cz=0.25 #cell size in z
 
-#Curva para dibujar tunel - interpolación Excel con geometría AutoCad
+#Parametric tunnel shape--> Excel interpolation equation 
 
 def f(x):
     return -1*0.00037731654713724100*x**6 + 0.01064032662972640000*x**5 - 0.12023951690048300000*x**4 + 0.69353748265166400000*x**3 - 2.25803586101028000000*x**2 + 4.43075769525603000000*x**1 + 0.00018151820924572300
 
                             #Inputs Correa
 
-b = 2 #ancho de correa
-h = 1.3 #altura de la correa
-x_correa = 2.5 #distancia desde pared del tunel
+b = 2 #conveyor belt width
+h = 1.3 #conveyor belt height
+x_correa = 2.5 #lateral distance to tunnel wall
 
-                            #Incendio de diseño (nada aún)
+                            #IDesign fire
 
-vel_viento = 0.7
-spread_rate = 0.02
+vel_viento = 0.7 #wind speed
+spread_rate = 0.02 #flame spread
 
 
 #----------------------------CÁLCULOS PREVIOS-----------------------------------
