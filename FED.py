@@ -17,7 +17,7 @@ eval_time = 900 # [s]
 position = 25
 
 ###############################################################################
-# INICIO DE VARIABLES
+# VARIABLE INITIATION
 ###############################################################################
 
 ColsCO = [1,N_sens+1]
@@ -33,7 +33,7 @@ VIS = 0.0
 TEMP = 0.0
 
 ###################################################################################
-# Definicion de Funciones FED
+# FRACTIONAL EFFECTIVE DOSE FUNCTIONS
 ###################################################################################
 
 # Hay que revisar si el argumento es % o decimales (21 vs 0.21)
@@ -64,7 +64,7 @@ def findIndex (Array,t):
     return Index
 
 ###################################################################################
-# Lectura y Manipulacion de output FDS
+# FDS OUTPUT READ AND WRITE
 ###################################################################################
 
 fds_output_file  = open('ASET_devc_5-7-19/ASET_devc_vp1_07.csv', "r")
@@ -82,7 +82,7 @@ for line in fds_output_lines:
 fds_output = np.asarray(fds_output)
 
 ###################################################################################
-# Asignacion de matrices de contaminantes
+# SPECIES MATRIX
 ###################################################################################
 
 FDStime = fds_output[:,0]
